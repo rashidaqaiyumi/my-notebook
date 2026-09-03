@@ -1,0 +1,426 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "peaceful paper notebook".
+ * Warm ivory paper, muted sage accent, warm charcoal ink.
+ * All colors are oklch tokens; never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-paper: var(--paper);
+  --color-paper-edge: var(--paper-edge);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-clay: var(--clay);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --shadow-page: 0 1px 2px oklch(0.3 0.03 70 / 0.06), 0 12px 30px -12px oklch(0.3 0.03 70 / 0.16);
+  --shadow-lift: 0 2px 6px oklch(0.3 0.03 70 / 0.07), 0 18px 40px -18px oklch(0.3 0.03 70 / 0.22);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.968 0.013 86);
+  --foreground: oklch(0.31 0.018 62);
+  --card: oklch(0.99 0.007 92);
+  --card-foreground: oklch(0.31 0.018 62);
+  --popover: oklch(0.99 0.007 92);
+  --popover-foreground: oklch(0.31 0.018 62);
+  --primary: oklch(0.53 0.058 152);
+  --primary-foreground: oklch(0.98 0.01 100);
+  --secondary: oklch(0.94 0.014 88);
+  --secondary-foreground: oklch(0.35 0.02 62);
+  --muted: oklch(0.945 0.012 88);
+  --muted-foreground: oklch(0.55 0.018 68);
+  --accent: oklch(0.925 0.026 140);
+  --accent-foreground: oklch(0.35 0.04 152);
+  --destructive: oklch(0.55 0.14 28);
+  --destructive-foreground: oklch(0.98 0.01 100);
+  --border: oklch(0.89 0.015 84);
+  --input: oklch(0.89 0.015 84);
+  --ring: oklch(0.53 0.058 152);
+  --paper: oklch(0.993 0.006 95);
+  --paper-edge: oklch(0.9 0.016 84);
+  --ink: oklch(0.31 0.018 62);
+  --ink-soft: oklch(0.55 0.018 68);
+  --clay: oklch(0.62 0.07 48);
+  --sidebar: oklch(0.951 0.016 84);
+  --sidebar-foreground: oklch(0.36 0.018 62);
+  --sidebar-accent: oklch(0.916 0.024 132);
+  --sidebar-accent-foreground: oklch(0.34 0.045 152);
+  --sidebar-border: oklch(0.89 0.016 84);
+  --hl-yellow: oklch(0.93 0.09 96);
+  --hl-green: oklch(0.91 0.07 150);
+  --hl-blue: oklch(0.9 0.055 235);
+  --hl-pink: oklch(0.9 0.06 5);
+  --grain-opacity: 0.4;
+}
+
+.dark {
+  --background: oklch(0.205 0.011 70);
+  --foreground: oklch(0.9 0.012 88);
+  --card: oklch(0.245 0.012 70);
+  --card-foreground: oklch(0.9 0.012 88);
+  --popover: oklch(0.245 0.012 70);
+  --popover-foreground: oklch(0.9 0.012 88);
+  --primary: oklch(0.7 0.06 152);
+  --primary-foreground: oklch(0.21 0.012 70);
+  --secondary: oklch(0.28 0.012 70);
+  --secondary-foreground: oklch(0.9 0.012 88);
+  --muted: oklch(0.275 0.011 70);
+  --muted-foreground: oklch(0.68 0.014 78);
+  --accent: oklch(0.32 0.026 150);
+  --accent-foreground: oklch(0.88 0.03 150);
+  --destructive: oklch(0.62 0.15 28);
+  --destructive-foreground: oklch(0.96 0.01 90);
+  --border: oklch(0.32 0.011 70);
+  --input: oklch(0.32 0.011 70);
+  --ring: oklch(0.7 0.06 152);
+  --paper: oklch(0.253 0.012 70);
+  --paper-edge: oklch(0.33 0.012 70);
+  --ink: oklch(0.9 0.012 88);
+  --ink-soft: oklch(0.68 0.014 78);
+  --clay: oklch(0.72 0.06 48);
+  --sidebar: oklch(0.225 0.011 70);
+  --sidebar-foreground: oklch(0.86 0.012 88);
+  --sidebar-accent: oklch(0.3 0.025 150);
+  --sidebar-accent-foreground: oklch(0.88 0.03 150);
+  --sidebar-border: oklch(0.31 0.011 70);
+  --hl-yellow: oklch(0.5 0.08 96);
+  --hl-green: oklch(0.45 0.07 150);
+  --hl-blue: oklch(0.44 0.06 235);
+  --hl-pink: oklch(0.45 0.06 5);
+  --grain-opacity: 0.22;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--hl-yellow);
+  }
+}
+
+/* Subtle paper grain — one shared background layer, cheap to render */
+@utility paper-grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  }
+}
+
+@utility page-surface {
+  background-color: var(--paper);
+  border: 1px solid var(--paper-edge);
+  box-shadow: var(--shadow-page);
+}
+
+@utility ruled-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 31px,
+    color-mix(in oklab, var(--paper-edge) 55%, transparent) 32px
+  );
+}
+
+@utility hand {
+  font-family: var(--font-hand);
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Editor (ProseMirror) typography ---------- */
+.notebook-prose {
+  font-size: 1.0425rem;
+  line-height: 1.85;
+  color: var(--ink);
+}
+.notebook-prose:focus {
+  outline: none;
+}
+.notebook-prose > * + * {
+  margin-top: 0.85em;
+}
+.notebook-prose h1 {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  margin-top: 1.4em;
+  line-height: 1.25;
+}
+.notebook-prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  margin-top: 1.3em;
+  line-height: 1.3;
+}
+.notebook-prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  margin-top: 1.2em;
+}
+.notebook-prose ul,
+.notebook-prose ol {
+  padding-left: 1.35rem;
+}
+.notebook-prose ul {
+  list-style: disc;
+}
+.notebook-prose ol {
+  list-style: decimal;
+}
+.notebook-prose li::marker {
+  color: color-mix(in oklab, var(--primary) 70%, var(--ink-soft));
+}
+.notebook-prose li > p {
+  margin: 0;
+}
+.notebook-prose li + li {
+  margin-top: 0.25em;
+}
+.notebook-prose blockquote {
+  border-left: 3px solid color-mix(in oklab, var(--primary) 55%, transparent);
+  padding: 0.1rem 0 0.1rem 1rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.notebook-prose a {
+  color: color-mix(in oklab, var(--primary) 80%, var(--ink));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--primary) 45%, transparent);
+  cursor: pointer;
+}
+.notebook-prose a:hover {
+  text-decoration-color: currentColor;
+}
+.notebook-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: color-mix(in oklab, var(--muted) 85%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+.notebook-prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: color-mix(in oklab, var(--muted) 90%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+}
+.notebook-prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.notebook-prose hr {
+  border: none;
+  border-top: 1px solid var(--paper-edge);
+  margin: 1.8em 0;
+}
+.notebook-prose mark {
+  border-radius: 3px;
+  padding: 0.08em 0.18em;
+  color: inherit;
+  background-color: var(--hl-yellow);
+  box-decoration-break: clone;
+}
+.notebook-prose img {
+  max-width: 100%;
+  border-radius: var(--radius);
+}
+.notebook-prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.notebook-prose th,
+.notebook-prose td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+}
+
+/* Task lists */
+.notebook-prose ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0.1rem;
+}
+.notebook-prose ul[data-type="taskList"] li {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+.notebook-prose ul[data-type="taskList"] li > label {
+  margin-top: 0.42em;
+  flex: 0 0 auto;
+  user-select: none;
+}
+.notebook-prose ul[data-type="taskList"] li > div {
+  flex: 1 1 auto;
+  transition:
+    color 260ms ease,
+    opacity 260ms ease;
+}
+.notebook-prose ul[data-type="taskList"] li[data-checked="true"] > div {
+  color: var(--ink-soft);
+  opacity: 0.72;
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in oklab, var(--primary) 60%, transparent);
+  text-decoration-thickness: 1.5px;
+}
+.notebook-prose input[type="checkbox"] {
+  appearance: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  border: 1.5px solid color-mix(in oklab, var(--primary) 50%, var(--paper-edge));
+  border-radius: 5px;
+  background: var(--paper);
+  cursor: pointer;
+  position: relative;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+.notebook-prose input[type="checkbox"]:hover {
+  border-color: var(--primary);
+}
+.notebook-prose input[type="checkbox"]:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+  animation: check-pop 260ms ease;
+}
+.notebook-prose input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 9px;
+  border: solid var(--primary-foreground);
+  border-width: 0 2px 2px 0;
+  transform: rotate(42deg);
+}
+@keyframes check-pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.22);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.notebook-prose p.is-editor-empty:first-child::before,
+.notebook-prose .is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: color-mix(in oklab, var(--ink-soft) 70%, transparent);
+}
+
+/* Gentle page-open transition */
+@keyframes page-open {
+  from {
+    opacity: 0;
+    transform: translateY(8px) rotateX(1.6deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@utility page-open {
+  animation: page-open 420ms cubic-bezier(0.22, 0.75, 0.3, 1) both;
+  transform-origin: top center;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@utility rise-in {
+  animation: rise-in 380ms cubic-bezier(0.22, 0.75, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
